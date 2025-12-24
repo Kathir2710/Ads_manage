@@ -18,7 +18,7 @@ export default function DashboardLayout() {
     <div className={`dash-root ${open ? "sidebar-open" : ""}`}>
 
       {/* MOBILE MENU BUTTON */}
-      <button className="menu-btn" onClick={() => setOpen(true)}>
+      <button className="menu-btn" onClick={() => setOpen(prev => !prev)}>
         ☰
       </button>
 

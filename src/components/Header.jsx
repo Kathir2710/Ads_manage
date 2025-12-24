@@ -58,7 +58,7 @@ export default function Header() {
           <Link to="/services">Services</Link>
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
-
+          <Link to="/pricing" >Pricing</Link>
           {!authenticated ? (
             <Link to="/login">Login</Link>
           ) : (

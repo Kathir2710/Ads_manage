@@ -29,13 +29,37 @@
 /* =========================
    SIDEBAR
 ========================= */
+/* =========================
+   MOBILE SIDEBAR BEHAVIOR
+========================= */
+@media (max-width: 900px) {
+  .menu-btn {
+    display: block;
+  }
+
 .dash-sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px;              /* hidden by default */
   width: 250px;
+  height: 100vh;
   background: #ffffff;
   padding: 28px 22px;
-  box-shadow: 6px 0 30px rgba(0,0,0,0.05);
+  box-shadow: 6px 0 30px rgba(0,0,0,0.15);
   transition: left 0.3s ease;
+  z-index: 1200;
 }
+
+
+  .dash-sidebar.open {
+    left: 0;
+  }
+
+  .dash-main {
+    padding-top: 60px;
+  }
+}
+
 
 /* BRAND */
 .brand {
