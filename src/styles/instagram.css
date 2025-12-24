@@ -1,0 +1,70 @@
+.ig-page {
+  background: #fff;
+  padding: 26px;
+  border-radius: 22px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.08);
+  max-width: 1000px;
+}
+
+.ig-page h2 {
+  margin-bottom: 16px;
+}
+
+.ig-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.ig-actions button {
+  background: #E1306C;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ig-post-box {
+  margin-bottom: 20px;
+}
+
+.ig-post-box input,
+.ig-post-box textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+.ig-post-box button {
+  background: #833AB4;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.ig-output {
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  max-height: 280px;
+  overflow: auto;
+  margin-top: 14px;
+}
+
+.ig-loading {
+  color: #E1306C;
+  font-weight: 600;
+}
+
+canvas {
+  margin-top: 20px;
+}

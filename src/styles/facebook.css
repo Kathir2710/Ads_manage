@@ -1,0 +1,119 @@
+/* PAGE WRAPPER */
+.facebook-page {
+  background: #ffffff;
+  padding: 24px 28px;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+  max-width: 1000px;
+}
+
+/* HEADINGS */
+.facebook-page h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.facebook-page h3 {
+  font-size: 18px;
+  margin: 22px 0 12px;
+}
+
+/* BUTTONS */
+.facebook-page button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.facebook-page button:hover {
+  opacity: 0.9;
+}
+
+/* LOGIN / LOGOUT */
+.facebook-page button:first-of-type {
+  background: #1877f2;
+  color: #ffffff;
+}
+
+/* DIVIDERS */
+.facebook-page hr {
+  border: none;
+  height: 1px;
+  background: #e5e7eb;
+  margin: 28px 0;
+}
+
+/* AD ACCOUNTS & PAGES LIST */
+.facebook-page div > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  background: #f9fafb;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* SELECT BUTTON */
+.facebook-page div > div button {
+  background: #6366f1;
+  color: #ffffff;
+}
+
+/* TEXTAREA */
+.facebook-page textarea {
+  width: 100%;
+  min-height: 90px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  margin: 14px 0;
+  resize: vertical;
+}
+
+/* JSON OUTPUT */
+.facebook-page pre {
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  max-height: 260px;
+  overflow: auto;
+  margin-top: 10px;
+}
+
+/* CHART CANVAS */
+.facebook-page canvas {
+  margin-top: 16px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .facebook-page {
+    padding: 18px;
+  }
+
+  .facebook-page div > div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .facebook-page button {
+    width: 100%;
+  }
+}
