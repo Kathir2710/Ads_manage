@@ -40,11 +40,9 @@ export default function Header() {
 
       {/* RIGHT: AUTH + HAMBURGER */}
       <div className="nav-right">
-        {!authenticated ? (
+        
           <Link to="/login" className="login-btn">Login</Link>
-        ) : (
-          <button className="login-btn" onClick={handleLogout}>Logout</button>
-        )}
+        
 
         <button className="hamburger" onClick={() => setOpen(!open)}>
           ☰
@@ -59,11 +57,8 @@ export default function Header() {
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/pricing" >Pricing</Link>
-          {!authenticated ? (
             <Link to="/login">Login</Link>
-          ) : (
-            <button onClick={handleLogout}>Logout</button>
-          )}
+         
         </div>
       )}
     </header>

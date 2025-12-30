@@ -38,26 +38,41 @@ body {
 /* ======================================================
    NAVBAR
 ====================================================== */
+/* ======================================================
+   NAVBAR (FIXED, AUTH-SAFE, RESPONSIVE)
+====================================================== */
 .navbar {
   height: 72px;
-  padding: 0 40px;
+  padding: 0 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: var(--card);
   position: fixed;
-  width: 100%;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
   box-shadow: 0 6px 20px var(--shadow);
+  box-sizing: border-box;
+}
+
+/* ---------------- LEFT ---------------- */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .nav-left img {
   height: 56px;
+  object-fit: contain;
 }
 
+/* ---------------- CENTER (PUBLIC ONLY) ---------------- */
 .nav-center {
   display: flex;
+  align-items: center;
   gap: 28px;
 }
 
@@ -66,6 +81,7 @@ body {
   color: var(--muted);
   font-weight: 500;
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -80,13 +96,23 @@ body {
   width: 0;
   height: 2px;
   background: var(--primary);
-  transition: width 0.3s;
+  transition: width 0.25s ease;
 }
 
 .nav-link:hover::after {
   width: 100%;
 }
 
+/* ---------------- RIGHT (LOGIN / LOGOUT + HAMBURGER) ---------------- */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* login / logout button */
 .login-btn {
   background: var(--primary);
   color: white;
@@ -94,7 +120,67 @@ body {
   border-radius: 22px;
   border: none;
   cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
 }
+
+/* hamburger */
+.hamburger {
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------------- MOBILE NAV (PUBLIC) ---------------- */
+.mobile-nav {
+  position: absolute;
+  top: 72px;
+  right: 16px;
+  background: var(--card);
+  box-shadow: 0 10px 30px var(--shadow);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 999;
+}
+
+.mobile-nav a,
+.mobile-nav button {
+  text-decoration: none;
+  color: var(--text);
+  background: none;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: left;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 900px) {
+  .nav-center {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .navbar {
+    padding: 0 16px;
+  }
+
+  .login-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
+
 
 /* ======================================================
    HERO SECTION
@@ -526,113 +612,256 @@ body {
   border: none;
   cursor: pointer;
 }
+/* ================= ROOT / VARIABLES ================= */
+:root {
+  --bg-main: #f7f9fc;
+  --bg-dark: #0f172a;
+  --bg-card: #ffffff;
 
-/* ================= SERVICES HERO ================= */
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --accent: #dc2626;
+
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-light: #e5e7eb;
+
+  --radius-lg: 18px;
+  --radius-md: 14px;
+
+  --shadow-sm: 0 6px 18px rgba(0,0,0,0.08);
+  --shadow-md: 0 20px 50px rgba(0,0,0,0.12);
+
+  --transition: 0.35s ease;
+}
+
+/* ================= GLOBAL ================= */
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 24px;
+  margin: auto;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+/* ================= HERO ================= */
 .services-hero {
-  padding: 160px 0 100px;
-  background: #f6f7fb;
+  background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+  color: var(--text-light);
+  padding: 160px 0 120px;
 }
 
 .services-hero-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
-  justify-content: space-between;
-  gap: 60px;
-}
-
-.services-hero-left {
-  max-width: 520px;
+  gap: 80px;
 }
 
 .services-hero-left h1 {
-  font-size: 42px;
-  margin-bottom: 20px;
+  font-size: 52px;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  font-weight: 700;
+  letter-spacing: -1px;
 }
 
 .services-hero-left p {
-  color: var(--muted);
-  margin-bottom: 16px;
-  line-height: 1.6;
+  font-size: 17px;
+  color: #cbd5f5;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  max-width: 520px;
 }
 
-/* STATS PANEL */
+.services-hero-left .cta {
+  margin-top: 32px;
+  background: var(--primary);
+  color: white;
+  padding: 14px 34px;
+  font-size: 15px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.services-hero-left .cta:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* ================= STATS PANEL ================= */
 .services-hero-right {
-  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  gap: 18px;
+  max-width: 340px;
 }
 
 .stat {
-  padding: 26px;
-  border-radius: 16px;
-  color: white;
-  text-align: left;
-}
-
-.stat.dark {
-  background: #1a7ea2;
-}
-
-.stat.red {
-  background: linear-gradient(135deg, #db1d1d, #7e0b0b);
+  padding: 30px 26px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
 }
 
 .stat h2 {
-  font-size: 32px;
-  margin-bottom: 6px;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
-/* ================= SERVICES CONTENT ================= */
+.stat p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.stat.dark {
+  background: linear-gradient(135deg, #1e293b, #020617);
+  color: white;
+}
+
+.stat.red {
+  background: linear-gradient(135deg, #dc2626, #7f1d1d);
+  color: white;
+}
+
+.stat:hover {
+  transform: translateY(-6px);
+}
+
+/* ================= SERVICES SECTION ================= */
 .services-content {
-  padding: 100px 0;
+  padding: 120px 0;
+  background: var(--bg-main);
 }
 
 .services-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 }
 
+.services-header h2 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+
+.page-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: auto;
+}
+
+/* ================= SERVICES GRID ================= */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 34px;
 }
 
 .service-card {
-  background: var(--card);
-  padding: 32px;
-  border-radius: 18px;
-  box-shadow: 0 20px 50px var(--shadow);
-  transition: transform 0.25s ease;
+  background: var(--bg-card);
+  padding: 42px 36px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
-.service-card:hover {
-  transform: translateY(-6px);
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(37,99,235,0.06),
+    transparent
+  );
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.service-card:hover::before {
+  opacity: 1;
 }
 
 .service-card h3 {
-  margin-bottom: 12px;
+  font-size: 20px;
+  margin-bottom: 14px;
+  font-weight: 600;
 }
 
+.service-card p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ================= CTA ================= */
 .services-cta {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 90px;
+}
+
+.services-cta .cta {
+  background: var(--primary);
+  color: white;
+  padding: 16px 46px;
+  font-size: 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.services-cta .cta:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
 }
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 900px) {
   .services-hero-inner {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     text-align: center;
   }
 
+  .services-hero-right {
+    justify-content: center;
+  }
+
   .stats-grid {
-    grid-template-columns: 1fr;
+    max-width: none;
     width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .services-hero-left h1 {
+    font-size: 40px;
   }
 }
 
@@ -1003,7 +1232,6 @@ img {
     text-align: center;
   }
 }
-
 /* ===============================
    PRICING PAGE BASE
 ================================ */
@@ -1031,6 +1259,7 @@ img {
 .pricing-header h1 {
   font-size: 44px;
   margin-bottom: 12px;
+  font-weight: 700;
 }
 
 .pricing-header .muted {
@@ -1039,7 +1268,7 @@ img {
 }
 
 /* ===============================
-   GRID
+   GRID (STRICT CONTROL)
 ================================ */
 .pricing-grid {
   display: grid;
@@ -1060,7 +1289,8 @@ img {
   position: relative;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  width: 100%;
 }
 
 .price-card:hover {
@@ -1133,15 +1363,15 @@ img {
 }
 
 /* ===============================
-   HIGHLIGHTED PLAN
+   HIGHLIGHTED PLAN (SAFE)
 ================================ */
 .price-card.highlight {
   border: 2px solid #4f46e5;
-  transform: scale(1.04);
+  transform: none; /* ❗ NO SCALING */
 }
 
 .price-card.highlight:hover {
-  transform: scale(1.04) translateY(-6px);
+  transform: translateY(-6px);
 }
 
 .badge-top {
@@ -1165,8 +1395,9 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* ❌ DO NOT span columns */
   .price-card.highlight {
-    grid-column: span 2;
+    grid-column: auto;
   }
 }
 
@@ -1186,8 +1417,12 @@ img {
     grid-template-columns: 1fr;
   }
 
+  .price-card {
+    padding: 34px 24px;
+  }
+
   .price-card.highlight {
-    transform: none;
+    transform: none; /* enforce same size */
   }
 }
 
@@ -1195,10 +1430,6 @@ img {
    SMALL MOBILE
 ================================ */
 @media (max-width: 480px) {
-  .price-card {
-    padding: 32px 24px;
-  }
-
   .cta {
     width: 100%;
   }
